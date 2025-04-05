@@ -1,2 +1,2 @@
 # SQL-50
-Solution to the SQL 50 list from github
+Solution to the SQL 50 list from Leetcode
