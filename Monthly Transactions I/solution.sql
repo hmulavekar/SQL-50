@@ -1,0 +1,3 @@
+    /* Write your PL/SQL query statement below */
+
+SELECT TO_CHAR(T.trans_date, 'YYYY-MM') AS "month", T.COUNTRY AS "country", COUNT(*) AS "trans_count",  SUM(CASE T.STATE WHEN 'approved' THEN 1 ELSE 0 END) AS "approved_count", SUM (T.AMOUNT) AS "trans_total_amount", SUM(CASE T.STATE WHEN 'approved' THEN T.AMOUNT ELSE 0 END)  AS "approved_total_amount"FROM TRANSACTIONS T GROUP BY TO_CHAR(T.trans_date, 'YYYY-MM') , T.COUNTRY ORDER BY TO_CHAR(T.trans_date, 'YYYY-MM'); 
