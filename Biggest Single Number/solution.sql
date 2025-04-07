@@ -1,0 +1,5 @@
+/* Write your PL/SQL query statement below */
+
+SELECT MAX(NUM) AS "num" FROM (SELECT MAX(NUM) AS NUM  FROM MYNUMBERS M GROUP BY (M.NUM) HAVING COUNT(M.NUM)=1) ;
+
+
