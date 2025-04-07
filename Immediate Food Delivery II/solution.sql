@@ -1,0 +1,2 @@
+/* Write your PL/SQL query statement below */
+SELECT ROUND(SUM(CASE WHEN ORDER_DATE = customer_pref_delivery_date THEN 1 ELSE 0 END) / SUM(DR) * 100,2) AS "immediate_percentage" FROM (SELECT D.*,DENSE_RANK() OVER (PARTITION BY CUSTOMER_ID ORDER BY ORDER_DATE) AS DR FROM DELIVERY D) WHERE DR = 1    ;
