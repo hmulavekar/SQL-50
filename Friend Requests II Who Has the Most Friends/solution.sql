@@ -1,0 +1,18 @@
+/* Write your PL/SQL query statement below */
+
+WITH all_ids as 
+(
+    SELECT REQUESTER_ID AS ID FROM REQUESTACCEPTED
+    UNION ALL
+    SELECT ACCEPTER_ID AS ID FROM REQUESTACCEPTED
+)
+SELECT ID, NUM 
+FROM 
+(
+    SELECT ID,
+    COUNT(ID) AS NUM,
+    RANK() OVER (ORDER BY COUNT(ID) DESC) AS rnk
+    FROM all_ids
+    GROUP BY ID
+)
+where rnk = 1 ;
